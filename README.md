@@ -1,16 +1,23 @@
-# wildcard
+# Wildcard
 
-FIXME: description
+Converts an arbitrary date-range interval into the optimal list of wildcard patterns to represent that interval.
 
 ## Installation
 
-Download from http://github.com/NarekA/wildcard
+```
+git clone http://github.com/NarekA/wildcard
+cd wildcard
+lein uberjar
+```
+
 
 ## Usage
 
     $ java -jar wildcard-0.1.0-standalone.jar start-date end-date
 
-Example:
+### Example:
+
+From Command line:
 
 ```
 $ java -jar target/uberjar/*-standalone.jar 20151212 20191201
@@ -40,22 +47,37 @@ $ java -jar target/uberjar/*-standalone.jar 20151212 20191201
 201911*
 ```
 
+In Clojure
+```
+(require '[wildcard.core :as wildcard])
+=> nil
+(wildcard/date-range->wildcards (t/interval (t/date-time 2016 10 3) (t/date-time 2016 11 17)))
+=>
+["20161003"
+ "20161004"
+ "20161005"
+ "20161006"
+ "20161007"
+ "20161008"
+ "20161009"
+ "2016101*"
+ "2016102*"
+ "2016103*"
+ "2016110*"
+ "20161110"
+ "20161111"
+ "20161112"
+ "20161113"
+ "20161114"
+ "20161115"
+ "20161116"]
 
-## Options
+```
 
-None so far
+## Coming Soon
 
-## Examples
+Support for more date formats
 
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
 
